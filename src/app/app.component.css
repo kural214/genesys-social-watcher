@@ -1,0 +1,71 @@
+/* The device with borders */
+.smartphone {
+    position: relative;
+    width: 360px;
+    height: 640px;
+    margin: auto;
+    border: 16px black solid;
+    border-top-width: 60px;
+    border-bottom-width: 60px;
+    border-radius: 36px;
+  }
+  
+  /* The horizontal line on the top of the device */
+  .smartphone:before {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 5px;
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #333;
+    border-radius: 10px;
+  }
+  
+  /* The circle on the bottom of the device */
+  .smartphone:after {
+    content: '';
+    display: block;
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    left: 50%;
+    bottom: -65px;
+    transform: translate(-50%, -50%);
+    background: #333;
+    border-radius: 50%;
+  }
+  
+  /* The screen (or content) of the device */
+  .smartphone .content {
+    width: 328px;
+    height: 520px;
+    background: white;
+  }
+
+  ::ng-deep #social-watcher.mdc-linear-progress--animation-ready .mdc-linear-progress__bar-inner {
+    border-color: rgb(76, 175, 80) !important;
+  }
+
+  ::ng-deep #sentiment-analysis.positive-comment.mdc-linear-progress--animation-ready .mdc-linear-progress__bar-inner {
+    border-color: rgb(76, 175, 80) !important;
+  }
+
+  ::ng-deep #sentiment-analysis.negative-comment.mdc-linear-progress--animation-ready .mdc-linear-progress__bar-inner {
+    border-color: red !important;
+  }
+
+  /* ::ng-deep #ticket-creation.available.mdc-linear-progress--animation-ready .mdc-linear-progress__bar-inner {
+    border-color: red !important;
+  } */
+
+  /* ::ng-deep #ticket-creation.unavailable.mdc-linear-progress--animation-ready .mdc-linear-progress__bar-inner {
+    border-color: rgb(76, 175, 80) !important;
+  } */
+
+
+  ::ng-deep #social-watcher.mdc-linear-progress--animation-ready.mdc-linear-progress--indeterminate .mdc-linear-progress__bar-inner {
+    border-color: var(--mdc-linear-progress-active-indicator-color, #6200ee) !important;
+  }

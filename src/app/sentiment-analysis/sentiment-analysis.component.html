@@ -1,0 +1,51 @@
+<div class="row" style="margin-top: 30px;">
+    <div class="col-md-4" style="margin-left: 37%;">
+        <h2 style="font-size: 34px; font-weight: 600;">Genesys Social Watcher</h2>
+    </div>
+</div>
+
+<div class="row" style="margin-top: 30px;">
+    <div class="col-md-4" style="margin-left: 37%;">
+        <div class="row">
+            <div class="col-md-3" style="font-size: 20px; width: 22%;">
+                Customer:
+            </div>
+            <div class="col-md-2" style="font-size: 20px;">
+                aws
+            </div>
+        </div>
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-md-3" style="font-size: 20px; width: 42%;">
+                Customer's Product:
+            </div>
+            <div class="col-md-2" style="font-size: 20px;">
+                #awscertification
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" *ngIf="isCommentAdded" style="margin-top: 50px;">
+    <div class="col-md-6 offset-md-3">
+      <mat-progress-bar id="social-watcher" #socialwatcher mode="indeterminate" value="100"></mat-progress-bar>
+      <mat-hint *ngIf="!findComment">Social watcher finding the comment</mat-hint>
+      <mat-hint *ngIf="findComment">Comment found: {{ comments }}</mat-hint>
+    </div>
+  </div>
+  
+  <div class="row" *ngIf="findComment" style="margin-top: 30px;">
+    <div class="col-md-6 offset-md-3">
+      <mat-progress-bar id="sentiment-analysis" #sentimentanalysis mode="indeterminate" value="100" [ngClass]="{'positive-comment': sentiment == 'Positive', 'negative-comment': sentiment == 'Negative'}"></mat-progress-bar>
+      <mat-hint *ngIf="!sentiment">Analyzing the sentiment</mat-hint>
+      <mat-hint *ngIf="sentiment">{{ sentiment }} sentiment</mat-hint>
+    </div>
+  </div>
+  
+  <div class="row" *ngIf="sentiment === 'Negative'" style="margin-top: 30px;">
+    <div class="col-md-6 offset-md-3">
+      <mat-progress-bar id="ticket-creation" #ticketcreation mode="indeterminate" value="100" [ngClass]="{'available': ticketText == 'available', 'unavailable': ticketText == 'unavailable' }"></mat-progress-bar>
+      <mat-hint *ngIf="!ticketText">Checking for ticket</mat-hint>
+      <mat-hint *ngIf="ticketText">{{ ticketText == 'available' ? 'Ticket already available. Increasing priority...' : ticketText == 'created' ? 'Ticket created and assigned to respective agent successfully. Please find the ticket ID: ' : ticketText == 'updated'? 'Ticket priority increased. Please find the ticket ID: ' : 'Ticket not found. Initializing ticket creation...' }}</mat-hint>
+      <mat-hint *ngIf="ticketText == 'created' || ticketText == 'updated'"><a href="https://genesysjira.atlassian.net/browse/DES-{{ticketID}}" target="_blank">#{{ticketID}}</a></mat-hint>
+    </div>
+  </div>
